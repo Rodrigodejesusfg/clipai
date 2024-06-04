@@ -1,5 +1,5 @@
 import streamlit as st
-import google.generativeai as genai
+import google-generativeai as genai
 import pandas as pd
 from datetime import datetime
 import plotly.express as px
@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()  # carrega as variáveis do arquivo .env
 
-genai.configure(api_key="AIzaSyCtj2xGASpn_FrNYW9D-Nbt_F8-CXpFypQ")
+genai.configure(api_key="APIKEY")
 
 # Encontrar um modelo compatível 
 MODELO_NOME = "gemini-1.5-pro-latest"  
@@ -24,7 +24,7 @@ COR_PERSONALIZADA = "#518CB7"
 # Carregar DataFrame com as notícias
 @st.cache_data
 def carregar_dados():
-    df = pd.read_excel(r"C:\Users\070283\OneDrive - Construtora Barbosa Mello SA\python\projeto clipping\google_alerts2.xlsx")
+    df = pd.read_excel("google_alerts2 - Copia.csv")
     df['Data'] = pd.to_datetime(df['Data']).dt.strftime('%Y-%m-%d') # Formatando data durante o carregamento
     return df
 
@@ -33,7 +33,7 @@ df = carregar_dados()
 # Carregar dados da planilha 'analise_empresas'
 @st.cache_data
 def carregar_dados_empresas():
-    df_empresas = pd.read_excel(r"C:\Users\070283\OneDrive - Construtora Barbosa Mello SA\python\projeto clipping\analise_empresas.xlsx")
+    df_empresas = pd.read_excel("analise_empresas_copia.csv")
     return df_empresas
 
 df_empresas = carregar_dados_empresas()

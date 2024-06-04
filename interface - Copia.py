@@ -3,7 +3,6 @@ import google-generativeai as genai
 import pandas as pd
 from datetime import datetime
 import plotly.express as px
-from dotenv import load_dotenv
 
 load_dotenv()  # carrega as variáveis do arquivo .env
 
